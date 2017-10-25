@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+  
+  <meta charset="utf-8" />
+   <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0">
+   <title>Individual Student Project Template 1</title>
+   <link rel="stylesheet"  href="styles.css" />
+   <link href="https://fonts.googleapis.com/css?family=Cinzel" rel="stylesheet">
+
+</head>
+
+<body>
+   
+      <header>
+         <h1>
+            <img src="https://cdn.glitch.com/3fa23b2b-c54a-4ad3-b812-57d7283c214d%2F768b34_e0241bb4a2754a4681e112fb47e2e425-mv2_d_6000_1800_s_2.jpg_srz_793_238_85_22_0.50_1.20_0%20(1).jpg?1507679299754" />
+          
+        </h1>
+      </header>
+
+	 <!--
+      The nav section (below) contains and unordered list <ul>.
+      Each individual page is listed as a separate line item <li>.
+      Note that the first two line items have been given a unique ID attribute value and an "href"
+      which is a hypertext reference.  You will need to create two additional .htm files and references 
+      for the other tabs to work.   
+	-->  
+	  <nav>
+ 
+	    <ul>
+            <li id="page1"><a href="index.html">Introduction</a></li>
+            <li id="page2"><a href="page2.html">Burritos</a></li>
+            <li id="page3"><a href="page3.html">Bowls</a></li>
+            <li id="page4"><a href="page4.html">Tacos</a></li>     
+            <li id="currentpage"><a href="page5.html">Customize your order!</a></li>
+            <li id="page6"><a href="page6.html">Web Security Tips!</a></li>
+
+		
+    </ul>
+      </nav>
+     
+     <article>
+     <h2> What would you like?</h2><br/>
+       
+       <form>
+        
+          
+         <p> <input type="checkbox" id="taco" value="6.25" /> </p> <!--creating checkbox for taco and associating it with the actual "taco" variable -->
+         <p> <label for="taco">Tacos ($6.25)</label> </p>
+         
+         
+         <p><input type="checkbox" id="burrito" value="6.25" /> </p> <!-- creating checkbox for burrito and associating it with the actual "burrito" variable -->
+         <p><label for="burrito">Burrito ($6.25)</label></p>
+         
+         <p><input type="checkbox" id="bowl" value="6.75" /></p> <!-- creating checkbox for bowl and associating it with the actual "bowl" variable -->
+         <p><label for="bowl">Bowl ($6.75)</label></p>
+         
+         <p><input type="checkbox" id="salad" value="6.00" /></p> <!-- creating checkbox for salad and associating it with the actual "salad" variable -->
+         <p> <label for="salad">Salad ($6.00)</label> </p>
+         
+         <input type="button" id="sButton" value="Submit" />  <!-- creating submit button -->
+
+         
+       </form>
+     <div>
+       <p id = "total"></p>
+     </div>  
+    
+
+  </article>
+    
+    <footer>
+         <p>Chipotle Enthusiast</p>
+      </footer>
+     
+  
+   
+  <script>
+  var products = ["Tacos ($6.25)", "Burrito ($6.25)", "Bowl ($6.75)", "Salad ($6.00)"]; //creating products
+  var labels = document.getElementsByTagName("label");
+    
+  function processProducts(){
+    for (var i = 0; i<4; i++)
+      {
+        labels[i].innerHTML=products[i]; //linking labels with products so that the product corresponds with the correct checkbox
+      }
+    
+  }
+    
+    if (window.addEventListener){
+      window.addEventListener("load", processProducts, false); //display products on load of the page
+    } else if (window.attachEvent){
+      window.attachEvent("onload", processProducts);
+      
+    }
+      
+      
+    
+  
+  function calcTotal() {
+  var mealTotal = 0;
+  var salesTax = .06;
+  var items = document.getElementsByTagName("input");
+  
+  for(var i =0; i<5; i++){
+    
+  if(items[i].checked)
+    {
+      mealTotal += (items[i].value *1); //adding item price for the ith element of the array to the meal total
+    }
+    
+    
+    
+  }
+  
+mealTotal *= 1 + salesTax;
+document.getElementById("total").innerHTML = "Your taste of heaven will be $" + mealTotal.toFixed(2);
+}
+
+
+
+var submitButton = document.getElementById("sButton");
+if (submitButton.addEventListener) {
+  submitButton.addEventListener("click", calcTotal, false);
+} else if (submitButton.attachEvent){
+  submitButton.attachEvent("onClick", calcTotal);
+}
+</script>
+  </body>
+  
+</html>
